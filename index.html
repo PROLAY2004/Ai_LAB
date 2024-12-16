@@ -2,12 +2,345 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>AI</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prolog Code Repository</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>AI</h1>
-    <iframe src="CSC_17_07_suman.pdf" width="100%" height="800px"></iframe>
+    <div id="container">
+        <header>
+            <h1>Prolog Code Repository</h1>
+        </header>
+
+        <nav>
+            <h2>Contents</h2>
+            <ul>
+                <!-- Links to questions -->
+                <li><a href="#q1">Q1. Sum of 2 Numbers</a></li>
+                <li><a href="#q2">Q2. Max of 2 Numbers</a></li>
+                <li><a href="#q3">Q3. Factorial of a Number</a></li>
+                <li><a href="#q4">Q4. Nth Term of Fibonacci</a></li>
+                <li><a href="#q5">Q5. GCD of Two Numbers</a></li>
+                <li><a href="#q6">Q6. Power of a Number</a></li>
+                <li><a href="#q7">Q7. Multiplication of Two Numbers</a></li>
+                <li><a href="#q8">Q8. Tower of Hanoi</a></li>
+                <li><a href="#q9">Q9. Cyclic Directed Graph</a></li>
+                <li><a href="#q10">Q10. Membership in List</a></li>
+                <li><a href="#q11">Q11. Concatenate Two Lists</a></li>
+                <li><a href="#q12">Q12. Reverse a List</a></li>
+                <li><a href="#q13">Q13. Palindrome Check</a></li>
+                <li><a href="#q14">Q14. Sum of List Elements</a></li>
+                <li><a href="#q15">Q15. Even or Odd Length List</a></li>
+                <li><a href="#q16">Q16. Nth Element in List</a></li>
+                <li><a href="#q17">Q17. Remove Duplicates from List</a></li>
+                <li><a href="#q18">Q18. Find Maximum in List</a></li>
+                <li><a href="#q19">Q19. Insert Element at Nth Position</a></li>
+                <li><a href="#q20">Q20. Sublist Check</a></li>
+                <li><a href="#q21">Q21. Delete Nth Element</a></li>
+                <li><a href="#q22">Q22. Delete All Occurrences</a></li>
+                <li><a href="#q23">Q23. Merge Two Ordered Lists</a></li>
+                <li><a href="#q24">Q24. Grammar Rules Parser</a></li>
+                <li><a href="#q25">Q25. Semantic Networks</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Sections for all questions -->
+            <section id="q1">
+                <h2>Q1. Sum of 2 Numbers</h2>
+                <textarea readonly>
+sum(X,Y):- S is X+Y,write(S).
+                </textarea>
+                <button onclick="copyCode('q1')">Copy Code</button>
+            </section>
+
+            <section id="q2">
+                <h2>Q2. Max of 2 Numbers</h2>
+                <textarea readonly>
+max(X,Y,M):- X>Y, M is X.
+max(_,Y,M):- M is Y.
+                </textarea>
+                <button onclick="copyCode('q2')">Copy Code</button>
+            </section>
+
+            <section id="q3">
+                <h2>Q3. Factorial of a Number</h2>
+                <textarea readonly>
+fact(0,1).
+fact(N,R):-N1 is N-1, fact(N1,R1), R is N*R1.
+                </textarea>
+                <button onclick="copyCode('q3')">Copy Code</button>
+            </section>
+
+            <section id="q4">
+                <h2>Q4. Nth Term of Fibonacci</h2>
+                <textarea readonly>
+fibo(1,0).
+fibo(2,1).
+fibo(P,N):- P1 is P-1,fibo(P1,R1),P2 is P-2,fibo(P2,R2),N is R1+R2.
+                </textarea>
+                <button onclick="copyCode('q4')">Copy Code</button>
+            </section>
+
+            <section id="q5">
+                <h2>Q5. GCD of Two Numbers</h2>
+                <textarea readonly>
+gcd(X,X,X).
+gcd(X,Y,D):- X<Y, gcd(Y,X,D).
+gcd(X,Y,D):- X>Y,Y1 is X-Y,gcd(Y,Y1,D).
+                </textarea>
+                <button onclick="copyCode('q5')">Copy Code</button>
+            </section>
+
+            <section id="q6">
+                <h2>Q6. Power of a Number</h2>
+                <textarea readonly>
+power(Num,0,Ans):-Ans is 1.
+power(Num,Pow,Ans):-P is Pow-1,power(Num,P,Ans1),Ans is Ans1*Num.
+                </textarea>
+                <button onclick="copyCode('q6')">Copy Code</button>
+            </section>
+
+            <section id="q7">
+                <h2>Q7. Multiplication of Two Numbers</h2>
+                <textarea readonly>
+multi(N1,1,N1).
+multi(N1,N2,Ans):-  Temp is N2-1, multi(N1,Temp,Ans1),Ans is Ans1+N1.
+                </textarea>
+                <button onclick="copyCode('q7')">Copy Code</button>
+            </section>
+
+            <section id="q8">
+                <h2>Q8. Tower of Hanoi</h2>
+                <textarea readonly>
+mov(0,_,_,_):-!.
+mov(N,L,C,R):- N1 is N-1,mov(N1,L,R,C),write("Move disk "),write(N),
+write(" from "),write(L),write(" to "),write(C),nl,mov(N1,C,L,R).
+
+toh(N):-mov(N,left,center,right).
+                </textarea>
+                <button onclick="copyCode('q8')">Copy Code</button>
+            </section>
+
+            <!-- Repeat this format for Q9 through Q24 -->
+            <section id="q9">
+                <h2>Q9. Cyclic Directed Graph</h2>
+                <textarea readonly>
+            edge(p,q).
+            edge(q,s).
+            edge(s,t).
+            
+            route(X,X):-write(X),!.
+            route(X,Y):-edge(X,Z),write(X),write("->"),route(Z,Y).
+                </textarea>
+                <button onclick="copyCode('q9')">Copy Code</button>
+            </section>
+            
+            <section id="q10">
+                <h2>Q10. Membership in List</h2>
+                <textarea readonly>
+            ismember(X,[X|T]).
+            ismember(X,[H|T]):-ismember(X,T).
+                </textarea>
+                <button onclick="copyCode('q10')">Copy Code</button>
+            </section>
+            
+            <section id="q11">
+                <h2>Q11. Concatenate Two Lists</h2>
+                <textarea readonly>
+            conc([],L,L).
+            conc([H|T],L2,[H|L3]):-conc(T,L2,L3).
+                </textarea>
+                <button onclick="copyCode('q11')">Copy Code</button>
+            </section>
+            
+            <section id="q12">
+                <h2>Q12. Reverse a List</h2>
+                <textarea readonly>
+            conc([],L,L).
+            conc([H|T],L2,[H|L3]):-conc(T,L2,L3).
+            
+            revlist([],[]).
+            revlist([H|T],R):-revlist(T,Trev),conc(Trev,[H],R).
+                </textarea>
+                <button onclick="copyCode('q12')">Copy Code</button>
+            </section>
+            
+            <section id="q13">
+                <h2>Q13. Palindrome Check</h2>
+                <textarea readonly>
+            conc([],L,L).
+            conc([H|T],L2,[H|L3]):-conc(T,L2,L3).
+            
+            revlist([],[]).
+            revlist([H|T],R):-revlist(T,Trev),conc(Trev,[H],R).
+            
+            palind(L):-revlist(L,R), L=R -> write("It is a Palindrome");write("It is not a Palindrome").
+                </textarea>
+                <button onclick="copyCode('q13')">Copy Code</button>
+            </section>
+            
+            <section id="q14">
+                <h2>Q14. Sum of List Elements</h2>
+                <textarea readonly>
+            sumlist([],0).
+            sumlist([H|T],S):-sumlist(T,S1),S is H+S1.
+                </textarea>
+                <button onclick="copyCode('q14')">Copy Code</button>
+            </section>
+            
+            <section id="q15">
+                <h2>Q15. Even or Odd Length List</h2>
+                <textarea readonly>
+            len([],0).
+            len([H|T],N):-len(T,N1), N is N1+1.
+            
+            evenlength(List):-len(List,N),mod(N,2)=:=0,write("The list is even length").
+            oddlength(List):-len(List,N),mod(N,2)=\=0,write("The list is odd length").
+            check_list(L):- evenlength(L);oddlength(L).
+                </textarea>
+                <button onclick="copyCode('q15')">Copy Code</button>
+            </section>
+            
+            <section id="q16">
+                <h2>Q16. Nth Element in List</h2>
+                <textarea readonly>
+            nth_element(1,[H|T],H).
+            nth_element(N,[H|T],X):-N1 is N-1, nth_element(N1,T,X).
+                </textarea>
+                <button onclick="copyCode('q16')">Copy Code</button>
+            </section>
+            
+            <section id="q17">
+                <h2>Q17. Remove Duplicates from List</h2>
+                <textarea readonly>
+            ismember(X,[X|T]).
+            ismember(X,[H|T]):-ismember(X,T).
+            
+            remove_dups([],[]).
+            remove_dups([H|T],R):-ismember(H,T),remove_dups(T,R).
+            remove_dups([H|T],[H|R]):-not(ismember(H,T)),remove_dups(T,R).
+                </textarea>
+                <button onclick="copyCode('q17')">Copy Code</button>
+            </section>
+            
+            <section id="q18">
+                <h2>Q18. Find Maximum in List</h2>
+                <textarea readonly>
+            max(X,Y,M):- (X=Y, M is X; X>Y, M is X; M is Y).
+            
+            maxlist([H|[]], H).
+            maxlist([H|T],M):-maxlist(T,M1),max(H,M1,M).
+                </textarea>
+                <button onclick="copyCode('q18')">Copy Code</button>
+            </section>
+            
+            <section id="q19">
+                <h2>Q19. Insert Element at Nth Position</h2>
+                <textarea readonly>
+            insert_nth(I, 1, L, [I|L]).
+            insert_nth(I, N, [H|T], [H|R]):- N1 is N-1,insert_nth(I, N1, T, R).
+                </textarea>
+                <button onclick="copyCode('q19')">Copy Code</button>
+            </section>
+            
+            <section id="q20">
+                <h2>Q20. Sublist Check</h2>
+                <textarea readonly>
+            sublist([],L).
+            sublist(S,[]):- false.
+            sublist([H1|T1],[H1|T2]):- sublist(T1,T2).
+            sublist([H1|T1],[H2|T2]):- sublist([H1|T1],T2).
+                </textarea>
+                <button onclick="copyCode('q20')">Copy Code</button>
+            </section>
+            
+            <section id="q21">
+                <h2>Q21. Delete Nth Element</h2>
+                <textarea readonly>
+            delete_nth(1, [H|T], T).
+            delete_nth(N, [H|T], [H|R]):- N1 is N-1,delete_nth(N1, T, R).
+                </textarea>
+                <button onclick="copyCode('q21')">Copy Code</button>
+            </section>
+            
+            <section id="q22">
+                <h2>Q22. Delete All Occurrences</h2>
+                <textarea readonly>
+            delete_all(X, [], []).
+            delete_all(X, [X|T], R):- delete_all(X, T, R).
+            delete_all(X, [H|T], [H|R]):- delete_all(X, T, R).
+                </textarea>
+                <button onclick="copyCode('q22')">Copy Code</button>
+            </section>
+            
+            <section id="q23">
+                <h2>Q23. Merge Two Ordered Lists</h2>
+                <textarea readonly>
+            merge([],L,L):-!.
+            merge([H1|T1],[H2|T2],[H3|T3]):-H1>H2,H3 is H2,merge([H1|T1],T2,T3).
+            merge([H1|T1],[H2|T2],[H3|T3]):-H1<H2,H3 is H1,merge(T1,[H2|T2],T3).
+            merge([H1|T1],[H2|T2],[H3,H4|T3]):-H1=H2,H3 is H1,H4 is H2,merge(T1,T2,T3).
+                </textarea>
+                <button onclick="copyCode('q23')">Copy Code</button>
+            </section>
+            
+            <section id="q24">
+                <h2>Q24. Grammar Rules Parser</h2>
+                <textarea readonly>
+            sentence-->np,vp.
+            np-->det,noun.
+            vp-->verb.
+            vp-->verb,np.
+            
+            det-->[a].
+            det-->[the].
+            det-->[an].
+            
+            noun-->[boy].
+            noun-->[girl].
+            noun-->[song].
+            noun-->[apple].
+            
+            verb-->[sing].
+            verb-->[sings].
+            verb-->[eats].
+                </textarea>
+                <button onclick="copyCode('q24')">Copy Code</button>
+            </section>
+            
+            
+            <section id="q25">
+                <h2>Q25. Semantic Networks</h2>
+                <textarea readonly>
+% Facts
+mat(mat1).
+sat_on(Cat1,mat1).
+cat(Cat1).
+cat(tom).
+color(tom,black).
+owns(john,tom).
+bird(bird1).
+caught(tom,bird1).
+is_coloured(tom,ginger).
+
+% Rules
+animal(X):- mammal(X).
+animal(X):- bird(X).
+mammal(X):- cat(X).
+
+have(X,fur):- mammal(X).
+likes(X,cream):- cat(X).
+                </textarea>
+                <button onclick="copyCode('q25')">Copy Code</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Prolog Code Repository</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
